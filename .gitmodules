@@ -1,0 +1,3 @@
+[submodule "opendistro-security-kibana-plugin"]
+  path = opendistro-security-kibana-plugin
+  url = https://github.com/vulnbe/opendistro-security-kibana-plugin
