@@ -1,6 +1,6 @@
 IMAGE_NAME			:= opendistro-kibana
 REPO						?= vulnbe
-KIBANA_VERSION 	?= 6.6.1
+KIBANA_VERSION 	?= 6.6.2
 PLUGIN_VERSION	?= 0.7.0.1
 PLUGIN_NAME			?= opendistro_security_kibana_plugin-${PLUGIN_VERSION}
 PLUGIN_DEST			?= build/kibana/${PLUGIN_NAME}
@@ -30,6 +30,7 @@ plugin: submodules
 		ash -c "\
 			cp -r /plugin /tmp/ods && \
 			cd /tmp/ods/opendistro-security-kibana-plugin && \
+			sed -i 's/"version": *"[^"]*"/"version": "${KIBANA_VERSION}"/1' package.json \
 			npm install && \
 			mkdir -p ${PLUGIN_DEST} && \
 			cp -a index.js ${PLUGIN_DEST} && \
